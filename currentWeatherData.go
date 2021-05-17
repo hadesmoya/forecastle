@@ -11,7 +11,7 @@ import (
 /*
 getCurrentWeather function shows you the current weather in more than 200.000 cities all over the world
 */
-func getCurrentWeather(city string, unitsOfMeasurement string, outputDetails string, ApiKey string) {
+func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails string, ApiKey string) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s",
 		city,
 		ApiKey,
