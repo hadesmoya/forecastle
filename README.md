@@ -14,6 +14,8 @@
 ## Table of contents
 - [Installation](#installation)
 - [Example](#example)
+- [Documentation](#documentation) 
+  - [getCurrentWeather()](#getcurrentweathercity-units-outputdetails-apikey)
 - [License](#license)
 
 ## Installation
@@ -36,6 +38,26 @@ forecastle.GetCurrentWeather(Moscow, metric, default, XXX)
 
 }
 ```
+
+## Documentation
+
+Forecastle is a go package to access [OpenWeather API](https://openweathermap.org/api) fast and easy. You can call only a function and get the weather data with the specific options you need. Below you can see all the functions and their arguments.
+
+### `getCurrentWeather(city, units, outputDetails, ApiKey)`
+
+The function <code>getCurrentWeather()</code> takes a city name, the units of measurement, details of the output and your OpenWeather API Key.
+
+<code>city</code> - open weather supports over 200,000 cities.
+
+<code>units</code> - standard, metric, and imperial units are available.
+
+<code>outputDetails</code> - specify how much data do you want, it can be default or extended.
+
+<code>ApiKey</code> - your [OpenWeatherMaps](https://openweathermap.org/api) API Key.
+
+As a result it shows a temperature and current state of the weather in the city.
+
+TODO: examples
 
 ## License
 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
