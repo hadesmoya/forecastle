@@ -34,7 +34,8 @@ forecastle.GetCurrentWeather(Moscow, metric, default, XXX)
 // where XXX - is an actual APIKEY for openweathermap.org
 // output is: It's 29.33° metric and a clear sky right now in the Moscow
 
-}```
+}
+```
 
 ## License
 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
