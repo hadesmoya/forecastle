@@ -10,7 +10,7 @@ import (
 
 // http://api.openweathermap.org/data/2.5/solar_radiation?lat={lat}&lon={lon}&appid={API key}
 
-func SolarRadiation(lat, lon float64, appid string) {
+func SolarRadiationCurrent(lat, lon float64, appid string) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/solar_radiation?lat=%v&lon=%v&appid=%s",
 		lat,
 		lon,
