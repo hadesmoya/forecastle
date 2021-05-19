@@ -26,7 +26,7 @@ func DailyForecastXdays(city string, numberOfDays int, unitsOfMeasurement string
 	body, _ := ioutil.ReadAll(response.Body)
 	// fmt.Println(response)
 
-	var jsonHandler jsonData
+	var jsonHandler currentWeatherJson
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
