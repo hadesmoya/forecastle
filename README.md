@@ -9,7 +9,6 @@
 <a href="https://github.com/h4desune/forecastle">
 <img src="https://img.shields.io/github/go-mod/go-version/h4desune/forecastle.svg" alt="go version">
 </a>
-<img src="https://img.shields.io/github/stars/h4desune/forecastle?style=social" alt="github stars">
 </div>
 
 ## Table of contents
