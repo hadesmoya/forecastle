@@ -54,6 +54,5 @@ type SysJson struct {
 type WindJson struct {
 	Speed float64 `json:"speed"`
 	Deg   int     `json:"deg"`
-	Gust  int     `json:"gust"`
+	Gust  float64 `json:"gust"`
 }
-
