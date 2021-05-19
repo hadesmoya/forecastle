@@ -7,12 +7,12 @@ type SolarJson struct {
 	} `json:"coord"`
 	List []struct {
 		Radiation struct {
-			Ghi   int `json:"ghi"`
-			Dni   int `json:"dni"`
-			Dhi   int `json:"dhi"`
-			GhiCs int `json:"ghi_cs"`
-			DniCs int `json:"dni_cs"`
-			DhiCs int `json:"dhi_cs"`
+			Ghi   float64 `json:"ghi"`
+			Dni   float64 `json:"dni"`
+			Dhi   float64 `json:"dhi"`
+			GhiCs float64 `json:"ghi_cs"`
+			DniCs float64 `json:"dni_cs"`
+			DhiCs float64 `json:"dhi_cs"`
 		} `json:"radiation"`
 		Dt int `json:"dt"`
 	} `json:"list"`
