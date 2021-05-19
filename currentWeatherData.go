@@ -8,9 +8,8 @@ import (
 	"net/http"
 )
 
-/*
-getCurrentWeather function shows you the current weather in more than 200.000 cities all over the world
-*/
+// GetCurrentWeather function shows you the current weather in more than 200.000 cities all over the world
+
 func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails string, ApiKey string) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s",
 		city,
@@ -28,7 +27,7 @@ func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails str
 	body, _ := ioutil.ReadAll(response.Body)
 	// fmt.Println(response)
 
-	var jsonHandler jsonData
+	var jsonHandler currentWeatherJson
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
