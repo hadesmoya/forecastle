@@ -9,7 +9,11 @@
 <a href="https://github.com/h4desune/forecastle">
 <img src="https://img.shields.io/github/go-mod/go-version/h4desune/forecastle.svg" alt="go version">
 </a>
+<a href="https://github.com/h4desune/forecastle">
+<img src="https://img.shields.io/github/stars/h4desune/forecastle.svg?style=social&label=Star&maxAge=2592000" alt="github stars"> 
+</a>
 </div>
+
 
 ## Table of contents
 - [Installation](#installation)
