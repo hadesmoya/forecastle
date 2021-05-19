@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func dailyForecastXdays(city string, numberOfDays int, unitsOfMeasurement string, outputDetails string, ApiKey string) {
+func DailyForecastXdays(city string, numberOfDays int, unitsOfMeasurement string, outputDetails string, ApiKey string) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/forecast/daily?q=%s&cnt=%v&appid=%s&units=%s",
 		city,
 		numberOfDays,
