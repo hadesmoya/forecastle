@@ -17,7 +17,7 @@
 - [Example](#example)
 - [Documentation](#documentation) 
   - [GetCurrentWeather()](#getcurrentweathercity-units-outputdetails-apikey)
-  - [SolarRadiationCurrent()](#solarradiationcurrent)
+  - [SolarRadiationCurrent()](#solarradiationcurrentlat-lon-appid)
 - [License](#license)
 
 ## Installation
