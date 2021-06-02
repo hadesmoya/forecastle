@@ -4,11 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
-func CurrentWeatherByGeo(latitude float64, longitude float64, unitsOfMeasurement string, outputType string, appid string, lang string) {
+func CurrentWeatherByGeo(
+	latitude float64,
+	longitude float64,
+	unitsOfMeasurement string,
+	appid string,
+	lang string,
+) (*CurrentWeatherJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?lat=%v&lon=%v&appid=%s&units=%s&lang=%s",
 		latitude,
 		longitude,
@@ -19,7 +24,7 @@ func CurrentWeatherByGeo(latitude float64, longitude float64, unitsOfMeasurement
 
 	response, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	// TODO: handle all (http) errors that may appear
 
@@ -29,16 +34,8 @@ func CurrentWeatherByGeo(latitude float64, longitude float64, unitsOfMeasurement
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	var output = jsonHandler.Weather[0].Description
-
-	switch {
-	case outputType == "ShowTemperature":
-		fmt.Printf("%v°", jsonHandler.Main.Temp)
-	case outputType == "ShowTemperatureAndDescription":
-		fmt.Printf("%v° - %v", jsonHandler.Main.Temp, output)
-	}
-
+	return &jsonHandler, nil
 }

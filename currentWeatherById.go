@@ -7,7 +7,12 @@ import (
 	"net/http"
 )
 
-func CurrentWeatherById(cityId int, unitsOfMeasurement string, appid string, lang string) (*CurrentWeatherJson, error) {
+func CurrentWeatherById(
+	cityId int,
+	unitsOfMeasurement string,
+	appid string,
+	lang string,
+) (*CurrentWeatherJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
 		cityId,
 		appid,
