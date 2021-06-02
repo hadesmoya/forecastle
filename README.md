@@ -13,7 +13,6 @@
 
 ## Example
 
-`Current weather in Moscow: few clouds`
 ```go
 var ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
@@ -28,6 +27,7 @@ func main() {
 
 }
 ```
+Output: `Current weather in Moscow: few clouds`
 ## Documentation
 
 See [repo wikia](https://github.com/h4desune/forecastle/wiki) for the documentation on how to install, run, use and etc.
