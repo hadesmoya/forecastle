@@ -35,9 +35,11 @@ func CurrentWeatherById(cityId int, unitsOfMeasurement string, outputType string
 
 	switch {
 	case outputType == "onlyTemperature":
-		fmt.Printf("%v°%s", jsonHandler.Main.Temp, unitsOfMeasurement)
+		fmt.Printf("%v°", jsonHandler.Main.Temp)
 	case outputType == "temperatureAndDescription":
-		fmt.Printf("%v°%s - %v", jsonHandler.Main.Temp, unitsOfMeasurement, outputWeather)
+		fmt.Printf("%v° - %v", jsonHandler.Main.Temp, outputWeather)
+	case outputType == "test":
+		fmt.Printf("%v° - %v", jsonHandler.Main.Temp, jsonHandler.Weather[0].Description)
 	}
 
 }
