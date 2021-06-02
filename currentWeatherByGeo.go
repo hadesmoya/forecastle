@@ -25,7 +25,7 @@ func CurrentWeatherByGeo(latitude float64, longitude float64, unitsOfMeasurement
 
 	body, _ := ioutil.ReadAll(response.Body)
 
-	var jsonHandler currentWeatherJson
+	var jsonHandler CurrentWeatherJson
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
