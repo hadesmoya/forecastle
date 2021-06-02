@@ -8,8 +8,8 @@ import (
 "net/http"
 )
 
-func CurrentWeatherById(cityId string, unitsOfMeasurement string, outputType string, appid string, lang string) {
-	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
+func CurrentWeatherById(cityId int, unitsOfMeasurement string, outputType string, appid string, lang string) {
+	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
 		cityId,
 		appid,
 		unitsOfMeasurement,
@@ -36,9 +36,8 @@ func CurrentWeatherById(cityId string, unitsOfMeasurement string, outputType str
 	switch {
 	case outputType == "onlyTemperature":
 		fmt.Printf("%v°%s", jsonHandler.Main.Temp, unitsOfMeasurement)
-	case outputType == "testMode":
-		fmt.Printf("It's a %s right now in the %s. The temperature = %v° %s, but it feels like %v°", outputWeather, jsonHandler.Name,
-			jsonHandler.Main.Temp, unitsOfMeasurement, jsonHandler.Main.FeelsLike)
+	case outputType == "temperatureAndDescription":
+		fmt.Printf("%v°%s - %v", jsonHandler.Main.Temp, unitsOfMeasurement, outputWeather)
 	}
 
 }
