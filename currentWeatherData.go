@@ -10,11 +10,12 @@ import (
 
 // GetCurrentWeather function shows you the current weather in more than 200.000 cities all over the world
 
-func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails string, ApiKey string) {
-	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s",
+func GetCurrentWeather(city string, unitsOfMeasurement string, outputType string, appid string, lang string) {
+	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
 		city,
-		ApiKey,
+		appid,
 		unitsOfMeasurement,
+		lang,
 	)
 
 	response, err := http.Get(url)
@@ -23,9 +24,7 @@ func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails str
 	}
 	// TODO: handle all (http) errors that may appear
 
-	// fmt.Println(url)
 	body, _ := ioutil.ReadAll(response.Body)
-	// fmt.Println(response)
 
 	var jsonHandler currentWeatherJson
 
@@ -33,17 +32,14 @@ func GetCurrentWeather(city string, unitsOfMeasurement string, outputDetails str
 	if err != nil {
 		log.Fatal(err)
 	}
-	// fmt.Printf("%+v", jsonHandler)
 
-	var outputWeather = weatherConditionCodesMap[jsonHandler.Weather[0].Id]  // uses the value of weatherConditionCodesMap as a current weather state output
+	var output = jsonHandler.Weather[0].Description
 
 	switch {
-
-	case outputDetails == "default":
-		fmt.Printf("It's %v° %s and a %s right now in the %s", jsonHandler.Main.Temp, unitsOfMeasurement, outputWeather, jsonHandler.Name)
-	case outputDetails == "extended":
-		fmt.Printf("It's a %s right now in the %s. The temperature = %v° %s, but it feels like %v°", outputWeather, jsonHandler.Name,
-			jsonHandler.Main.Temp, unitsOfMeasurement, jsonHandler.Main.FeelsLike)
+	case outputType == "ShowTemperature":
+		fmt.Printf("%v°", jsonHandler.Main.Temp)
+	case outputType == "ShowTemperatureAndDescription":
+		fmt.Printf("%v° - %v", jsonHandler.Main.Temp, output)
 	}
 
 }

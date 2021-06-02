@@ -1,16 +1,17 @@
 package forecastle
 
 import (
-"encoding/json"
-"fmt"
-"io/ioutil"
-"log"
-"net/http"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
-func CurrentWeatherById(cityId int, unitsOfMeasurement string, outputType string, appid string, lang string) {
-	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
-		cityId,
+func CurrentWeatherByGeo(latitude float64, longitude float64, unitsOfMeasurement string, outputType string, appid string, lang string) {
+	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?lat=%v&lon=%v&appid=%s&units=%s&lang=%s",
+		latitude,
+		longitude,
 		appid,
 		unitsOfMeasurement,
 		lang,
