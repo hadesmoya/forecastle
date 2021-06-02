@@ -11,8 +11,23 @@
 </a>
 </div>
 
+## Example
 
+`Current weather in Moscow: few clouds`
+```go
+var ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
+func main() {
+	var weatherRightNow, err = forecastle.CurrentWeatherById(524901, "metric", ApiKey, "us")
+	if err != nil {
+            log.Fatal(err)  
+            return
+        }
+
+    fmt.Printf("Current weather in %s: %s", weatherRightNow.Name, weatherRightNow.Weather[0].Description)
+
+}
+```
 ## Documentation
 
 See [repo wikia](https://github.com/h4desune/forecastle/wiki) for the documentation on how to install, run, use and etc.
