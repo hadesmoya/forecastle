@@ -1,4 +1,4 @@
-package forecastle
+package legacy
 
 /*
 Map global variable that contains all of the OpenWeather Weather Conditions
