@@ -16,7 +16,7 @@ func CurrentWeatherInCircle(
 	appid string,
 	units string,
 	lang string,
-) (*CurrentWeatherJson, error) {
+) (*CurrentWeatherJsonMux, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/find?lat=%v&lon=%v&cnt=%v&appid=%s&units=%s&lang=%s",
 		latitude,
 		longitude,
@@ -34,7 +34,7 @@ func CurrentWeatherInCircle(
 
 	body, _ := ioutil.ReadAll(response.Body)
 
-	var jsonHandler CurrentWeatherJson
+	var jsonHandler CurrentWeatherJsonMux
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
