@@ -10,15 +10,15 @@ import (
 func CurrentWeatherByGeo(
 	latitude float64,
 	longitude float64,
-	unitsOfMeasurement string,
 	appid string,
+	units string,
 	lang string,
 ) (*CurrentWeatherJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?lat=%v&lon=%v&appid=%s&units=%s&lang=%s",
 		latitude,
 		longitude,
 		appid,
-		unitsOfMeasurement,
+		units,
 		lang,
 	)
 
