@@ -8,7 +8,7 @@ import (
 )
 
 func CurrentWeatherByGeo(
-	latitude float64,
+	latitude,
 	longitude float64,
 	appid string,
 	units string,
