@@ -10,16 +10,16 @@ import (
 )
 
 func CurrentWeatherInCircle(
-	lat float64,
-	lon float64,
+	latitude float64,
+	longitude float64,
 	cnt int,
 	appid string,
 	units string,
 	lang string,
 ) (*CurrentWeatherJson, error) {
 	var url = fmt.Sprintf("api.openweathermap.org/data/2.5/find?lat=%v&lon=%v&cnt=%v&appid=%s&units=%s&lang=%s",
-		lat,
-		lon,
+		latitude,
+		longitude,
 		cnt,
 		appid,
 		units,
