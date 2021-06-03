@@ -14,7 +14,7 @@
 ## Example
 
 ```go
-var ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
+var ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 func main() {
 	var weatherRightNow, err = forecastle.CurrentWeatherById(524901, "metric", ApiKey, "us")
