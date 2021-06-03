@@ -7,10 +7,10 @@ import (
 	"net/http"
 )
 
-func SolarRadiationCurrent(lat, lon float64, appid string) (*SolarJson, error) {
+func SolarRadiationCurrent(latitude, longitude float64, appid string) (*SolarJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/solar_radiation?lat=%v&lon=%v&appid=%s",
-		lat,
-		lon,
+		latitude,
+		longitude,
 		appid,
 	)
 
