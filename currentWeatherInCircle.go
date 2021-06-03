@@ -17,7 +17,7 @@ func CurrentWeatherInCircle(
 	units string,
 	lang string,
 ) (*CurrentWeatherJson, error) {
-	var url = fmt.Sprintf("api.openweathermap.org/data/2.5/find?lat=%v&lon=%v&cnt=%v&appid=%s&units=%s&lang=%s",
+	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/find?lat=%v&lon=%v&cnt=%v&appid=%s&units=%s&lang=%s",
 		latitude,
 		longitude,
 		cnt,
