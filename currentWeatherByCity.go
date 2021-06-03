@@ -9,14 +9,14 @@ import (
 
 func CurrentWeatherByCity(
 	city string,
-	unitsOfMeasurement string,
 	appid string,
+	units string,
 	lang string,
 ) (*CurrentWeatherJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
 		city,
 		appid,
-		unitsOfMeasurement,
+		units,
 		lang,
 	)
 
