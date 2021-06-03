@@ -4,11 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
-func SolarRadiationCurrent(lat, lon float64, appid string) {
+func SolarRadiationCurrent(lat, lon float64, appid string) (*SolarJson, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/solar_radiation?lat=%v&lon=%v&appid=%s",
 		lat,
 		lon,
@@ -17,21 +16,19 @@ func SolarRadiationCurrent(lat, lon float64, appid string) {
 
 	response, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	// TODO: handle all (http) errors that may appear
 
 	body, _ := ioutil.ReadAll(response.Body)
 
-	var SolarHandler SolarJson
+	var solarHandler SolarJson
 
-	err = json.Unmarshal(body, &SolarHandler)
+	err = json.Unmarshal(body, &solarHandler)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	fmt.Printf("Latitude = %v; Longtitude = %v\n. GHI = %v",
-		SolarHandler.Coord.Lat,
-		SolarHandler.Coord.Lon,
-		SolarHandler.List[0].Radiation.Ghi)
+	return &solarHandler, nil
 }
+
