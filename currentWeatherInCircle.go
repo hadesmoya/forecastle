@@ -1,7 +1,5 @@
 package forecastle
 
-// api.openweathermap.org/data/2.5/find?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
-
 import (
 	"encoding/json"
 	"fmt"
