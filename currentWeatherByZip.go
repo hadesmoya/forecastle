@@ -7,8 +7,6 @@ import (
 	"net/http"
 )
 
-// api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
-
 func CurrentWeatherByZip(
 	zip int,
 	countryCode string,
