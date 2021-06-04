@@ -30,7 +30,7 @@ func main() {
 Output: `Current weather in Moscow: few clouds`
 ## Documentation
 
-See [repo wikia](https://github.com/h4desune/forecastle/wiki) for the documentation on how to install, run, use and etc.
+See [repo wiki](https://github.com/h4desune/forecastle/wiki) for the documentation on how to install, run, use and etc.
 
 ## License
 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
