@@ -7,6 +7,8 @@ import (
     "net/http"
 )
 
+const baseURI = "https://api.openweathermap.org/data/2.5/"
+
 type Client struct {
     appID string
 }
@@ -15,14 +17,13 @@ func NewClient(appID string) *Client {
     return &Client{appID: appID}
 }
 
-// Helper functions to make methods contain less code.
+// API call template function
 
 func apiCall(url string) (*CurrentWeather, error) {
     response, err := http.Get(url)
     if err != nil {
         return nil, err
     }
-    // TODO: handle all (http) errors that may appear.
 
     body, _ := ioutil.ReadAll(response.Body)
 
@@ -36,12 +37,10 @@ func apiCall(url string) (*CurrentWeather, error) {
     return &jsonHandler, nil
 }
 
-// TODO: const baseURI
-
 // The Beginning of Methods Declaration.
 
-func (client *Client) CurrentWeatherByCity(city string, units, language string) (*CurrentWeather, error) {
-    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
+func (client *Client) CurrentWeatherByCity(city, units, language string) (*CurrentWeather, error) {
+    var url = fmt.Sprintf(baseURI + "weather?q=%s&appid=%s&units=%s&lang=%s",
         city,
         client.appID,
         units,
@@ -51,13 +50,37 @@ func (client *Client) CurrentWeatherByCity(city string, units, language string) 
     return apiCall(url)
 }
 
-/*func(w *Forecastle) CurrentWeatherByID() (*CurrentWeather, error) {
-    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
-        w.CityID,
-        w.AppID,
-        w.Units,
-        w.Language,
+func(client *Client) CurrentWeatherByID(cityID int, units, language string ) (*CurrentWeather, error) {
+    var url = fmt.Sprintf(baseURI + "weather?id=%v&appid=%s&units=%s&lang=%s",
+        cityID,
+        client.appID,
+        units,
+        language,
     )
 
     return apiCall(url)
-}*/
+}
+
+func(client *Client) CurrentWeatherByGeo(latitude, longitude float64, units, language string) (*CurrentWeather, error) {
+    var url = fmt.Sprintf(baseURI + "weather?lat=%v&lon=%v&appid=%s&units=%s&lang=%s",
+        latitude,
+        longitude,
+        client.appID,
+        units,
+        language,
+    )
+
+    return apiCall(url)
+}
+
+func(client *Client) CurrentWeatherByZip(zip int, countryCode string, units, language string) (*CurrentWeather, error) {
+    var url = fmt.Sprintf(baseURI + "weather?zip=%v,%s&appid=%s&units=%s&lang=%s",
+        zip,
+        countryCode,
+        client.appID,
+        units,
+        language,
+    )
+
+    return apiCall(url)
+}
