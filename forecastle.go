@@ -10,11 +10,11 @@ import (
 // A struct of call arguments.
 
 type Forecastle struct {
-    city string
-    cityID int
-    appID string
-    units string
-    language string
+    City string
+    CityID int
+    AppID string
+    Units string
+    Language string
 }
 
 // Helper functions to make methods contain less code.
@@ -38,14 +38,14 @@ func apiCall(url string) (*CurrentWeather, error) {
     return &jsonHandler, nil
 }
 
-// The Beginning of Methods.
+// The Beginning of Methods Declaration.
 
 func (w *Forecastle) CurrentWeatherByCity() (*CurrentWeather, error) {
     var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
-        w.city,
-        w.appID,
-        w.units,
-        w.language,
+        w.City,
+        w.AppID,
+        w.Units,
+        w.Language,
     )
 
     return apiCall(url)
@@ -53,10 +53,10 @@ func (w *Forecastle) CurrentWeatherByCity() (*CurrentWeather, error) {
 
 func(w *Forecastle) CurrentWeatherByID() (*CurrentWeather, error) {
     var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
-        w.cityID,
-        w.appID,
-        w.units,
-        w.language,
+        w.CityID,
+        w.AppID,
+        w.Units,
+        w.Language,
     )
 
     return apiCall(url)
