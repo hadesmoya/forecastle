@@ -33,17 +33,12 @@ func apiCall(url string) (*CurrentWeather, error) {
     return &jsonHandler, nil
 }
 
-func CurrentWeatherByCity(
-    city Forecastle,
-    appID Forecastle,
-    units Forecastle,
-    language Forecastle,
-) (*CurrentWeather, error) {
+func (w *Forecastle) currentWeatherInCity() (*CurrentWeather, error) {
     var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
-        city,
-        appID,
-        units,
-        language,
+        w.city,
+        w.appID,
+        w.units,
+        w.language,
     )
 
     return apiCall(url)
