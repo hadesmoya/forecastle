@@ -12,7 +12,7 @@ func CurrentWeatherById(
 	appid string,
 	units string,
 	lang string,
-) (*CurrentWeatherJson, error) {
+) (*CurrentWeather, error) {
 	var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
 		cityId,
 		appid,
@@ -28,7 +28,7 @@ func CurrentWeatherById(
 
 	body, _ := ioutil.ReadAll(response.Body)
 
-	var jsonHandler CurrentWeatherJson
+	var jsonHandler CurrentWeather
 
 	err = json.Unmarshal(body, &jsonHandler)
 	if err != nil {
