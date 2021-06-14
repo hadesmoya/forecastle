@@ -7,14 +7,12 @@ import (
     "net/http"
 )
 
-// A struct of call arguments.
+type Client struct {
+    appID string
+}
 
-type Forecastle struct {
-    City string
-    CityID int
-    AppID string
-    Units string
-    Language string
+func NewClient(appID string) *Client {
+    return &Client{appID: appID}
 }
 
 // Helper functions to make methods contain less code.
@@ -38,20 +36,22 @@ func apiCall(url string) (*CurrentWeather, error) {
     return &jsonHandler, nil
 }
 
+// TODO: const baseURI
+
 // The Beginning of Methods Declaration.
 
-func (w *Forecastle) CurrentWeatherByCity() (*CurrentWeather, error) {
+func (client *Client) CurrentWeatherByCity(city string, units, language string) (*CurrentWeather, error) {
     var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=%s&lang=%s",
-        w.City,
-        w.AppID,
-        w.Units,
-        w.Language,
+        city,
+        client.appID,
+        units,
+        language,
     )
 
     return apiCall(url)
 }
 
-func(w *Forecastle) CurrentWeatherByID() (*CurrentWeather, error) {
+/*func(w *Forecastle) CurrentWeatherByID() (*CurrentWeather, error) {
     var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%v&appid=%s&units=%s&lang=%s",
         w.CityID,
         w.AppID,
@@ -60,4 +60,4 @@ func(w *Forecastle) CurrentWeatherByID() (*CurrentWeather, error) {
     )
 
     return apiCall(url)
-}
+}*/
