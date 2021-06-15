@@ -50,6 +50,17 @@ func unmarshalCurrentWeatherList(body []byte) (*CurrentWeatherList, error) {
     return &jsonHandler, nil
 }
 
+func unmarshalSolarRadiation(body []byte) (*SolarRadiation, error) {
+    var jsonHandler SolarRadiation
+
+    err := json.Unmarshal(body, &jsonHandler)
+    if err != nil {
+        return nil, err
+    }
+
+    return &jsonHandler, nil
+}
+
 // The Beginning of Methods Declaration.
 
 // https://openweathermap.org/current
@@ -173,3 +184,39 @@ func (client *Client) CurrentWeatherInCircle(
 }
 
 //
+
+func (client *Client) SolarRadiationCurrent(
+    latitude,
+    longitude float64,
+) (*SolarRadiation, error) {
+    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/solar_radiation?lat=%v&lon=%v&appid=%s",
+        latitude,
+        longitude,
+        client.appID,
+    )
+
+    body, err := apiCall(url)
+    if err != nil {
+        return nil, err
+    }
+
+    return unmarshalSolarRadiation(body)
+}
+
+func (client *Client) SolarRadiationForecast(
+    latitude,
+    longitude float64,
+) (*SolarRadiation, error) {
+    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/solar_radiation/forecast?lat=%v&lon=%v&appid=%s",
+        latitude,
+        longitude,
+        client.appID,
+    )
+
+    body, err := apiCall(url)
+    if err != nil {
+        return nil, err
+    }
+
+    return unmarshalSolarRadiation(body)
+}
