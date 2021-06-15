@@ -29,7 +29,7 @@ func apiCall(url string) (body []byte, err error) {
     return ioutil.ReadAll(response.Body)
 }
 
-func unmarshalTo(body []byte, object interface{}) (*reflect.Type, error) {
+func unmarshalTo(body []byte, object interface{}) (reflect.Type, error) {
     jsonHandler := reflect.TypeOf(object)
 
     err := json.Unmarshal(body, &jsonHandler)
@@ -37,12 +37,12 @@ func unmarshalTo(body []byte, object interface{}) (*reflect.Type, error) {
         return nil, err
     }
 
-    return &jsonHandler, nil
+    return jsonHandler, nil
 }
 
 // The Beginning of Methods Declaration.
 
-func (client *Client) CurrentWeatherByCity(city, units, language string) (*reflect.Type, error) {
+func (client *Client) CurrentWeatherByCity(city, units, language string) (reflect.Type, error) {
     var url = fmt.Sprintf(baseURI + "weather?q=%s&appid=%s&units=%s&lang=%s",
         city,
         client.appID,
