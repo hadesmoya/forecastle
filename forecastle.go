@@ -39,7 +39,20 @@ func unmarshalCurrentWeather(body []byte) (*CurrentWeather, error) {
     return &jsonHandler, nil
 }
 
+func unmarshalCurrentWeatherList(body []byte) (*CurrentWeatherList, error) {
+    var jsonHandler CurrentWeatherList
+
+    err := json.Unmarshal(body, &jsonHandler)
+    if err != nil {
+        return nil, err
+    }
+
+    return &jsonHandler, nil
+}
+
 // The Beginning of Methods Declaration.
+
+// https://openweathermap.org/current
 
 func (client *Client) CurrentWeatherByCity(city, units, language string) (*CurrentWeather, error) {
     var url = fmt.Sprintf(baseURI+"weather?q=%s&appid=%s&units=%s&lang=%s",
@@ -106,3 +119,57 @@ func (client *Client) CurrentWeatherByZip(zip int, countryCode string, units, la
 
     return unmarshalCurrentWeather(body)
 }
+
+func (client *Client) CurrentWeatherWithinRectangle(
+    longitudeLeft,
+    latitudeBottom,
+    longitudeRight,
+    latitudeTop,
+    zoom int,
+    units,
+    language string,
+) (*CurrentWeatherList, error) {
+    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/box/city?bbox=%v,%v,%v,%v,%v&appid=%s&units=%s&lang=%s",
+        longitudeLeft,
+        latitudeBottom,
+        longitudeRight,
+        latitudeTop,
+        zoom,
+        client.appID,
+        units,
+        language,
+    )
+
+    body, err := apiCall(url)
+    if err != nil {
+        return nil, err
+    }
+
+    return unmarshalCurrentWeatherList(body)
+}
+
+func (client *Client) CurrentWeatherInCircle(
+    latitude,
+    longitude float64,
+    cnt int,
+    units,
+    lang string,
+) (*CurrentWeatherList, error) {
+    var url = fmt.Sprintf("https://api.openweathermap.org/data/2.5/find?lat=%v&lon=%v&cnt=%v&appid=%s&units=%s&lang=%s",
+        latitude,
+        longitude,
+        cnt,
+        client.appID,
+        units,
+        lang,
+    )
+
+    body, err := apiCall(url)
+    if err != nil {
+        return nil, err
+    }
+
+    return unmarshalCurrentWeatherList(body)
+}
+
+//
