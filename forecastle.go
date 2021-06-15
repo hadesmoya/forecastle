@@ -5,6 +5,7 @@ import (
     "fmt"
     "io/ioutil"
     "net/http"
+    "reflect"
 )
 
 const baseURI = "https://api.openweathermap.org/data/2.5/"
@@ -19,17 +20,19 @@ func NewClient(appID string) *Client {
 
 // API call template function
 
-func apiCall(url string) (*CurrentWeather, error) {
+func apiCall(url string) (body []byte, err error) {
     response, err := http.Get(url)
     if err != nil {
         return nil, err
     }
 
-    body, _ := ioutil.ReadAll(response.Body)
+    return ioutil.ReadAll(response.Body)
+}
 
-    var jsonHandler CurrentWeather
+func unmarshalTo(body []byte, object interface{}) (*reflect.Type, error) {
+    jsonHandler := reflect.TypeOf(object)
 
-    err = json.Unmarshal(body, &jsonHandler)
+    err := json.Unmarshal(body, &jsonHandler)
     if err != nil {
         return nil, err
     }
@@ -39,7 +42,7 @@ func apiCall(url string) (*CurrentWeather, error) {
 
 // The Beginning of Methods Declaration.
 
-func (client *Client) CurrentWeatherByCity(city, units, language string) (*CurrentWeather, error) {
+func (client *Client) CurrentWeatherByCity(city, units, language string) (*reflect.Type, error) {
     var url = fmt.Sprintf(baseURI + "weather?q=%s&appid=%s&units=%s&lang=%s",
         city,
         client.appID,
@@ -47,10 +50,20 @@ func (client *Client) CurrentWeatherByCity(city, units, language string) (*Curre
         language,
     )
 
-    return apiCall(url)
+    body, err := apiCall(url)
+    if err != nil {
+        return nil, err
+    }
+
+    result, err := unmarshalTo(body, CurrentWeather{})
+    if err != nil {
+        return nil, err
+    }
+
+    return result, nil
 }
 
-func(client *Client) CurrentWeatherByID(cityID int, units, language string ) (*CurrentWeather, error) {
+/*func(client *Client) CurrentWeatherByID(cityID int, units, language string ) (*CurrentWeather, error) {
     var url = fmt.Sprintf(baseURI + "weather?id=%v&appid=%s&units=%s&lang=%s",
         cityID,
         client.appID,
@@ -83,4 +96,4 @@ func(client *Client) CurrentWeatherByZip(zip int, countryCode string, units, lan
     )
 
     return apiCall(url)
-}
+}*/
