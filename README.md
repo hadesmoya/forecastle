@@ -1,6 +1,6 @@
 <h1 align="center">Forecastle</h1>
-<div align="center"><p>🌧🏰🌥</p></div>
-<div align="center"><strong>Is a go package that uses</strong></div>
+<div align="center"><p>🌧🏯🌥</p></div>
+<div align="center"><strong>A simple golang SDK for</strong></div>
 <div align="center"><code>OpenWeather API</code> to help you</div>
 <div align="center">implement weather forecasts in your apps</div>
 <div align="center">with the speed of light ⚡️</div>
@@ -11,26 +11,48 @@
 </a>
 </div>
 
-## Example
+## Table of Contents
 
+- [Documentation]()
+- [See Examples]()
+
+## Documentation
+All documentation can be accessed through the [repo wiki](https://github.com/h4desune/forecastle/wiki).
+
+## See Examples
+All Examples can be accessed through [this folder]().
+
+Here is a quick one for overview:
+
+```shell
+main.go                  ⎯ ⠀❐⠀⤬
+```
 ```go
-var ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+package main
+
+import (
+    "fmt"
+    "github.com/h4desune/forecastle"
+    "log"
+)
+
+const appID = "YOUR_OWM_API_KEY"
 
 func main() {
-	var weatherRightNow, err = forecastle.CurrentWeatherById(524901, "metric", ApiKey, "us")
-	if err != nil {
-            log.Fatal(err)  
-            return
-        }
 
-    fmt.Printf("Current weather in %s: %s", weatherRightNow.Name, weatherRightNow.Weather[0].Description)
+    client := forecastle.NewClient(appID)
 
+    weather, err := client.CurrentWeatherByCity("Moscow", "metric", "us")
+    if err != nil {
+        log.Fatal(err)
+        return
+    }
+
+    fmt.Printf("It's %s and it feels like %v\n", weather.Weather[0].Description, weather.Main.FeelsLike)
 }
 ```
-Output: `Current weather in Moscow: few clouds`
-## Documentation
+```shell
+~ go run main.go
 
-See [repo wiki](https://github.com/h4desune/forecastle/wiki) for the documentation on how to install, run, use and etc.
-
-## License
-[Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
+It's overcast clouds and it feels like 30.71
+```
