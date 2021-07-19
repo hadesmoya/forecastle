@@ -5,6 +5,11 @@
 <div align="center">implement weather forecasts in your apps</div>
 <div align="center">with the speed of light ⚡️</div>
 <br>
+
+<div align="center">
+<img src="main.go.png">
+</div>
+<br>
 <div align="center">
 <a href="https://github.com/h4desune/forecastle">
 <img src="https://img.shields.io/github/go-mod/go-version/h4desune/forecastle.svg" alt="go version">
@@ -48,11 +53,11 @@ func main() {
         return
     }
 
-    fmt.Printf("It's %s and it feels like %v\n", weather.Weather[0].Description, weather.Main.FeelsLike)
+    fmt.Printf("It is %s and it feels like %v\n", weather.Weather[0].Description, weather.Main.FeelsLike)
 }
 ```
 ```shell
 ~ go run main.go
 
-It's overcast clouds and it feels like 30.71
+It is overcast clouds and it feels like 30.71
 ```
