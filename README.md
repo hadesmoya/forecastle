@@ -7,7 +7,7 @@
 <br>
 
 <div align="center">
-<img src="main.go.png">
+<img src="main.go.github.png">
 </div>
 <br>
 <div align="center">
