@@ -1,9 +1,4 @@
-<h1 align="center">Forecastle</h1>
-<div align="center"><p>🌧🏯🌥</p></div>
-<div align="center"><strong>A simple golang SDK for</strong></div>
-<div align="center"><code>OpenWeather API</code> to help you</div>
-<div align="center">implement weather forecasts in your apps</div>
-<div align="center">with the speed of light ⚡️</div>
+<img src="logo.png" alt="forecastle.go">
 <br>
 
 <div align="center">
