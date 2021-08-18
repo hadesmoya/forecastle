@@ -8,4 +8,4 @@
 
 __Forecastle.go is an open-source golang OpenWeatherMap API SDK.__ It helps you to implement weather forecasts and more in your applications.
 
-If you want to learn more about this package - visit our [documentation](https://github.com/h4desune/forecastle/wiki)
+If you want to learn more about this package - visit our [documentation](https://github.com/h4desune/forecastle/wiki).
