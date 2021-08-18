@@ -1,4 +1,4 @@
-<img src="forecastle.go.png" alt="forecastle.go">
+<p align="center"><img src="logo.png" alt="forecastle.go"></p>
 <br>
 
 <div align="center">
