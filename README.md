@@ -1,10 +1,6 @@
-<p align="center"><img src="logo.png" alt="forecastle.go"></p>
+<p align="center"><img src="logo.png" alt="forecastle.go" width="450"></p>
 <br>
 
-<div align="center">
-<img src="preview.png">
-</div>
-<br>
 <div align="center">
 <a href="https://github.com/h4desune/forecastle">
 <img src="https://img.shields.io/github/go-mod/go-version/h4desune/forecastle.svg" alt="go version">
