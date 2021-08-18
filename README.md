@@ -8,48 +8,4 @@
 
 __Forecastle.go is an open-source golang OpenWeatherMap API SDK.__ It helps you to implement weather forecasts and more in your applications.
 
-## Table of Contents
-
-- [Documentation]()
-- [See Examples]()
-
-## Documentation
-All documentation can be accessed through the [repo wiki](https://github.com/h4desune/forecastle/wiki).
-
-## See Examples
-All Examples can be accessed through [this folder]().
-
-Here is a quick one for overview:
-
-```shell
-main.go                  ⎯ ⠀❐⠀⤬
-```
-```go
-package main
-
-import (
-    "fmt"
-    "github.com/h4desune/forecastle"
-    "log"
-)
-
-const appID = "YOUR_OWM_API_KEY"
-
-func main() {
-
-    client := forecastle.NewClient(appID)
-
-    weather, err := client.CurrentWeatherByCity("Moscow", "metric", "us")
-    if err != nil {
-        log.Fatal(err)
-        return
-    }
-
-    fmt.Printf("It is %s and it feels like %v\n", weather.Weather[0].Description, weather.Main.FeelsLike)
-}
-```
-```shell
-~ go run main.go
-
-It is overcast clouds and it feels like 30.71
-```
+If you want to learn more about this package - visit our [documentation](https://github.com/h4desune/forecastle/wiki)
