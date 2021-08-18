@@ -2,12 +2,9 @@
 
 [Getting Started](https://github.com/h4desune/forecastle/wiki) • [Docs](https://github.com/h4desune/forecastle/wiki) • [Examples](https://github.com/h4desune/forecastle/wiki)
 
-<br>
-<div align="center">
-<a href="https://github.com/h4desune/forecastle">
+<div align="left"><a href="https://github.com/h4desune/forecastle">
 <img src="https://img.shields.io/github/go-mod/go-version/h4desune/forecastle.svg" alt="go version">
-</a>
-</div>
+</a></div>
 
 ## Table of Contents
 
