@@ -1,4 +1,5 @@
 <p align="center"><img src="logo.png" alt="forecastle.go" width="450"></p>
+[Getting Started](https://github.com/h4desune/forecastle/wiki) • [Docs](https://github.com/h4desune/forecastle/wiki) • [Examples](https://github.com/h4desune/forecastle/wiki)
 <br>
 
 <div align="center">
